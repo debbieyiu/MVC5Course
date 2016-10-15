@@ -40,9 +40,11 @@ namespace MVC5Course.Models
 		[DisplayName("性別")]
 		public string Gender { get; set; }
 		[DisplayName("生日")]
+		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 		public Nullable<System.DateTime> DateOfBirth { get; set; }
-		[DisplayName("信用等級")]
+		[DisplayName("信用評等")]
+		[Range(0, 9, ErrorMessage = "{0}必須介於{1}-{2}")]
 		public Nullable<double> CreditRating { get; set; }
         public string XCode { get; set; }
         public Nullable<int> OccupationId { get; set; }
