@@ -23,16 +23,16 @@ namespace MVC5Course.Models
     
         public int ClientId { get; set; }
 		[Required]
-		[StringLength(maximumLength:10, ErrorMessage = "First Name程ぃ禬筁10じ")]
+		[StringLength(maximumLength:10, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
         public string FirstName { get; set; }
 		[Required]
-		[StringLength(maximumLength: 5, ErrorMessage = "Middle Name程ぃ禬筁10じ")]
+		[StringLength(maximumLength: 5, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
 		public string MiddleName { get; set; }
 		[Required]
-		[StringLength(maximumLength: 10, ErrorMessage = "Last Name程ぃ禬筁10じ")]
+		[StringLength(maximumLength: 10, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
 		public string LastName { get; set; }
 		[Required]
-		[RegularExpression("[MF]", ErrorMessage = "Gender逆块M┪F")]
+		[RegularExpression("[MF]", ErrorMessage = "{0}逆块M┪F")]
 		public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<double> CreditRating { get; set; }
