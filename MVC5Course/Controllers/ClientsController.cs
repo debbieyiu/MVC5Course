@@ -10,107 +10,112 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ProductsController : Controller
+    public class ClientsController : Controller
     {
         private FabricsEntities db = new FabricsEntities();
 
-        // GET: Products
+        // GET: Clients
         public ActionResult Index()
         {
-            return View(db.Product.OrderByDescending(x => x.ProductId).Take(10).ToList());
+            var client = db.Client.Include(c => c.Occupation).OrderByDescending(p => p.ClientId).Take(10);
+            return View(client.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Clients/Details/5
         public ActionResult Details(int? id)
-        { 
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Client client = db.Client.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(client);
         }
 
-        // GET: Products/Create
+        // GET: Clients/Create
         public ActionResult Create()
         {
+            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Clients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Create([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")] Client client)
         {
             if (ModelState.IsValid)
             {
-                db.Product.Add(product);
+                db.Client.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
+            return View(client);
         }
 
-        // GET: Products/Edit/5
+        // GET: Clients/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Client client = db.Client.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
+            return View(client);
         }
 
-        // POST: Products/Edit/5
+        // POST: Clients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")] Client client)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
+            return View(client);
         }
 
-        // GET: Products/Delete/5
+        // GET: Clients/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Client client = db.Client.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(client);
         }
 
-        // POST: Products/Delete/5
+        // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
+            Client client = db.Client.Find(id);
+            db.Client.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
