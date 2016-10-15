@@ -11,6 +11,7 @@ namespace MVC5Course.Models
 {
 	using System;
 	using System.Collections.Generic;
+	using System.ComponentModel;
 	using System.ComponentModel.DataAnnotations;
 
 	public partial class Client
@@ -24,18 +25,24 @@ namespace MVC5Course.Models
         public int ClientId { get; set; }
 		[Required]
 		[StringLength(maximumLength:10, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
-        public string FirstName { get; set; }
+		[DisplayName("")]
+		public string FirstName { get; set; }
 		[Required]
 		[StringLength(maximumLength: 5, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
+		[DisplayName("い丁")]
 		public string MiddleName { get; set; }
 		[Required]
 		[StringLength(maximumLength: 10, ErrorMessage = "{0} 程ぃ禬筁{1}じ")]
+		[DisplayName("﹎")]
 		public string LastName { get; set; }
 		[Required]
 		[RegularExpression("[MF]", ErrorMessage = "{0}逆块M┪F")]
+		[DisplayName("┦")]
 		public string Gender { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
-        public Nullable<double> CreditRating { get; set; }
+		[DisplayName("ネら")]
+		public Nullable<System.DateTime> DateOfBirth { get; set; }
+		[DisplayName("獺ノ单")]
+		public Nullable<double> CreditRating { get; set; }
         public string XCode { get; set; }
         public Nullable<int> OccupationId { get; set; }
         public string TelephoneNumber { get; set; }
