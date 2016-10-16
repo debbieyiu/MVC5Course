@@ -22,6 +22,13 @@ namespace MVC5Course.Controllers
 			if (!string.IsNullOrEmpty(search))
 			{
 				client = db.Client.Where(c => c.FirstName.Contains(search)).OrderByDescending(p => p.ClientId);
+				//var data = from p in db.Client
+				//		   where p.FirstName.Contains(search)
+				//		   select new
+				//		   {
+				//			   p.FirstName,
+				//			   p.LastName
+				//		   }; 
 			}
             return View(client.Take(10).ToList());
         }
