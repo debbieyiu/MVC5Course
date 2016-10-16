@@ -9,12 +9,10 @@
 
 namespace MVC5Course.Models
 {
-	using System;
-	using System.Collections.Generic;
-	using System.ComponentModel;
-	using System.ComponentModel.DataAnnotations;
-
-	public partial class Client
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
@@ -23,29 +21,12 @@ namespace MVC5Course.Models
         }
     
         public int ClientId { get; set; }
-		[Required]
-		[StringLength(maximumLength:10, ErrorMessage = "{0} 最大不可超過{1}個自元")]
-		[DisplayName("名字")]
-		public string FirstName { get; set; }
-		[Required]
-		[StringLength(maximumLength: 5, ErrorMessage = "{0} 最大不可超過{1}個自元")]
-		[DisplayName("中間名")]
-		public string MiddleName { get; set; }
-		[Required]
-		[StringLength(maximumLength: 10, ErrorMessage = "{0} 最大不可超過{1}個自元")]
-		[DisplayName("姓")]
-		public string LastName { get; set; }
-		[Required]
-		[RegularExpression("[MF]", ErrorMessage = "{0}欄位只能輸入M或F")]
-		[DisplayName("性別")]
-		public string Gender { get; set; }
-		[DisplayName("生日")]
-		[DataType(DataType.Date)]
-		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-		public Nullable<System.DateTime> DateOfBirth { get; set; }
-		[DisplayName("信用評等")]
-		[Range(0, 9, ErrorMessage = "{0}必須介於{1}-{2}")]
-		public Nullable<double> CreditRating { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public Nullable<double> CreditRating { get; set; }
         public string XCode { get; set; }
         public Nullable<int> OccupationId { get; set; }
         public string TelephoneNumber { get; set; }
