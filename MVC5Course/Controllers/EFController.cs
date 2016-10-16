@@ -127,5 +127,11 @@ namespace MVC5Course.Controllers
 				WHERE c.FirstName LIKE @p0", "%" + keyward + "%");
 			return View(data);
 		}
+
+		public ActionResult ClientContribution3(string id)
+		{
+			var data = db.usp_GetClientContribution(id);
+			return View(data);
+		}
     }
 }
