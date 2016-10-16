@@ -9,7 +9,7 @@ namespace MVC5Course.Controllers
 {
     public class EFController : Controller
     {
-		FabricsEntities db = new FabricsEntities();
+		private FabricsEntities db = new FabricsEntities();
         // GET: EF
         public ActionResult Index()
         {
@@ -43,6 +43,28 @@ namespace MVC5Course.Controllers
 		{
 			var product = db.Product.Find(id);
 			return View(product);
+		}
+
+		public ActionResult Update(int id)
+		{
+			var product = db.Product.Find(id);
+			product.ProductName += "!";
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Add20Percent()
+		{
+			var data = db.Product.Where(p => p.ProductName.Contains("White"));
+			foreach (var item in data)
+			{
+				if (item.Price.HasValue)
+				{ 
+					item.Price *= 1.2m;
+				}
+			}
+			db.SaveChanges();
+			return RedirectToAction("Index");
 		}
     }
 }
