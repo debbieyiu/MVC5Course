@@ -10,7 +10,7 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
 		ProductRepository repo = RepositoryHelper.GetProductRepository();
@@ -68,7 +68,7 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Products/Edit/5
-		[Route("prod/edit/{id}")]
+		//[Route("prod/edit/{id}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
