@@ -7,12 +7,14 @@ using MVC5Course.Models.ViewModels;
 
 namespace MVC5Course.Controllers
 {
+	[LocalDebugOnly]
     public class MVController : BaseController
     {
         // GET: MV (Model Binding)
+		[ShareData]
         public ActionResult Index()
         {
-			ViewData["Temp1"] = "暫存資料 Temp1";
+			//ViewData["Temp1"] = "暫存資料 Temp1";
 
 			var b = new ClientLoginViewModel()
 			{
