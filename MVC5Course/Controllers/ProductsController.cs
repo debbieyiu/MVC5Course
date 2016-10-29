@@ -19,8 +19,10 @@ namespace MVC5Course.Controllers
         {
 			//var repo = new ProductRepository();
 			//repo.UnitOfWork = new EFUnitOfWork();
-			var result = repo.All().OrderByDescending(x => x.ProductId).Take(10).ToList();
+
 			//var result = db.Product.OrderByDescending(x => x.ProductId).Take(10).ToList();
+			//var result = repo.All().OrderByDescending(x => x.ProductId).Take(10).ToList();
+			var result = repo.GetAllOrderbyDescIDTake(10).ToList();
             return View(result);
         }
 
