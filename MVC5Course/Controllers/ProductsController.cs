@@ -68,6 +68,7 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Products/Edit/5
+		[Route("prod/edit/{id}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -122,8 +123,9 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
 			Product product = repo.Find(id);
-            //Product product = db.Product.Find(id);
-			product.IsDeleted = true;
+			//Product product = db.Product.Find(id);
+			repo.Delete(product);
+			//product.IsDeleted = true;
 			//db.Product.Remove(product);
 			//db.SaveChanges();
 			repo.UnitOfWork.Commit();
