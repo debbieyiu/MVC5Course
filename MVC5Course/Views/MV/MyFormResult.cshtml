@@ -10,4 +10,7 @@
 	var c = TempData["MyFormData"] as ClientLoginViewModel;
 }
 
-@c.FirstName @c.LastName
+@if (c != null) {
+	@c.LastName @c.FirstName 
+}
+
