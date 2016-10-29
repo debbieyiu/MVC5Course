@@ -53,7 +53,7 @@ namespace MVC5Course.Controllers
 			return View(data);
 		}
 
-		public ActionResult BatchUpdate(ProductBatchUpdateViewModel[] items)
+		public ActionResult BatchUpdate(List<ProductBatchUpdateViewModel> items)
 		{
 			/*
 			 * item.ProductId 轉成下面格式

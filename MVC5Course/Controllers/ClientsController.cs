@@ -99,11 +99,16 @@ namespace MVC5Course.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")] Client client)
+        public ActionResult Edit(
+			//[Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")]
+			int id, FormCollection form)//Client client)
         {
-            if (ModelState.IsValid)
+			var client = db.Client.Find(id);
+
+			//if (ModelState.IsValid)
+			if(TryUpdateModel<Client>(client, null, null, excludeProperties: new string[] { "IsAdmin" }))
             {
-                db.Entry(client).State = EntityState.Modified;
+                //db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
