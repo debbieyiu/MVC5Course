@@ -11,7 +11,10 @@
 </p>
 <p>
 	<form action="">
-		搜尋: <input type="search" name="search" value="" />
+		搜尋: @Html.TextBox("search")
+		@*搜尋: <input type="search" name="search" value="" />*@
+		@Html.DropDownList("CreditRating", "--Credit Rating--")
+		@Html.DropDownList("Gender", "--Gender--")
 		<input type="submit" value="搜尋" />
 	</form>
 </p>

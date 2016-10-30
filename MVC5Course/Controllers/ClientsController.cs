@@ -16,7 +16,7 @@ namespace MVC5Course.Controllers
         //private FabricsEntities db = new FabricsEntities();
 
         // GET: Clients
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? CreditRating, string Gender)
         {
             var client = db.Client.Include(c => c.Occupation).OrderByDescending(p => p.ClientId);
 			if (!string.IsNullOrEmpty(search))
@@ -30,6 +30,12 @@ namespace MVC5Course.Controllers
 				//			   p.LastName
 				//		   }; 
 			}
+
+			var options = (from p in db.Client
+						   select p.CreditRating).Distinct().OrderBy(p => p.Value).ToList();
+
+			ViewBag.CreditRating = new SelectList(options);
+			ViewBag.Gender = new SelectList(new string[] { "M", "F" });
             return View(client.Take(10).ToList());
         }
 
@@ -112,6 +118,10 @@ namespace MVC5Course.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+			//把所有ModelState清空
+			ModelState.Clear();
+
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
             return View(client);
         }
