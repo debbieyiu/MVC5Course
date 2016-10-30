@@ -475,6 +475,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\Shared\EditorTemplates\Client.cshtml" />
     <Content Include="widgets.html" />
     <EntityDeploy Include="Models\Fabrics.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -584,6 +585,7 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

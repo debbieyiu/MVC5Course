@@ -15,6 +15,10 @@
 		@*搜尋: <input type="search" name="search" value="" />*@
 		@Html.DropDownList("CreditRating", "--Credit Rating--")
 		@Html.DropDownList("Gender", "--Gender--")
+		@Html.CheckBox("aa[0]") 1
+		@Html.CheckBox("aa[1]") 2
+		@Html.CheckBox("aa[2]") 3
+		@Html.ValueFor(m => m.FirstOrDefault().DateOfBirth)
 		<input type="submit" value="搜尋" />
 	</form>
 </p>
