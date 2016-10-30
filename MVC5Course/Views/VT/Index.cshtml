@@ -1,0 +1,42 @@
+﻿@{
+	Layout = "";
+	int[] data = new int[] { 1, 2, 3, 4, 5 };
+ }
+
+
+@*@if (a == 1)
+{
+	@:啟用
+	@DateTime.Now
+}
+
+<hr />
+@DateTime.Now*@
+@*
+	12345
+	1 2 3 4 5
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+*@
+
+@foreach (var item in data)
+{
+	@item
+}
+
+@foreach (var item in data)
+{
+	@(@item + " ")
+}
+
+<ul>
+	@foreach (var item in data)
+	{
+@:  <li>@item</li>
+	}
+</ul>

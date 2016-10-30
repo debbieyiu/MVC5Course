@@ -184,6 +184,7 @@
     <Compile Include="Controllers\MVController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="ActionFilters\ShareDataAttribute.cs" />
+    <Compile Include="Controllers\VTController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -398,6 +399,7 @@
     <Content Include="Views\MV\MyForm.cshtml" />
     <Content Include="Views\MV\Productlist.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationExeption.cshtml" />
+    <Content Include="Views\VT\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
