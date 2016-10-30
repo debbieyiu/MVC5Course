@@ -72,5 +72,11 @@ namespace MVC5Course.Controllers
 			db.SaveChanges();
 			return RedirectToAction("ProductList");
 		}
+
+		public ActionResult MyError()
+		{
+			throw new InvalidOperationException("Error");
+			return View();
+		}
     }
 }
