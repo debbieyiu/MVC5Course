@@ -586,6 +586,8 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CreditRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
