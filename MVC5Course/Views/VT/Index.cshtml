@@ -1,8 +1,18 @@
 ﻿@{
-	Layout = "";
+	//Layout = "";
 	int[] data = new int[] { 1, 2, 3, 4, 5 };
+	ViewBag.Title = "Index";
  }
 
+@section breadcrumb{
+
+	<li><a href="@Url.Action("Index")">@ViewBag.Title</a></li>
+	}
+@*@section scripts {
+	<script>
+		alert("ok");
+	</script>	
+}*@
 
 @*@if (a == 1)
 {
@@ -35,8 +45,10 @@
 }
 
 <ul>
-	@foreach (var item in data)
-	{
-@:  <li>@item</li>
-	}
+@foreach (var item in data)
+{
+  <li>@item</li>
+}
 </ul>
+
+@Html.ActionLink("NewIndex", "NewIndex")
