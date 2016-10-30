@@ -33,6 +33,7 @@ namespace MVC5Course.Models
         public string ProductName { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
+		[Required]
         public Nullable<decimal> Stock { get; set; }
         [Required]
         public bool IsDeleted { get; set; }
