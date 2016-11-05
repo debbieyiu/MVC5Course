@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
+using PagedList;
 
 namespace MVC5Course.Controllers
 {
@@ -15,15 +16,16 @@ namespace MVC5Course.Controllers
         //private FabricsEntities db = new FabricsEntities();
 		ProductRepository repo = RepositoryHelper.GetProductRepository();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int pageNo = 1)
         {
 			//var repo = new ProductRepository();
 			//repo.UnitOfWork = new EFUnitOfWork();
 
 			//var result = db.Product.OrderByDescending(x => x.ProductId).Take(10).ToList();
 			//var result = repo.All().OrderByDescending(x => x.ProductId).Take(10).ToList();
-			var result = repo.GetAllOrderbyDescIDTake(10).ToList();
-            return View(result);
+			//var result = repo.GetAllOrderbyDescIDTake(10).ToList();
+			var data = repo.All().OrderBy(p => p.ProductId).AsQueryable();
+            return View(data.ToPagedList(pageNo, 10));
         }
 
         // GET: Products/Details/5
