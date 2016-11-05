@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -12,6 +13,7 @@ namespace MVC5Course.Controllers
     {
         public ActionResult Index()
         {
+			//Thread.Sleep(10000);
             return View();
         }
 
@@ -21,6 +23,12 @@ namespace MVC5Course.Controllers
 
             return View();
         }
+
+		public ActionResult GetTime()
+		{
+			return Content(DateTime.Now.ToString());
+			//return View();
+		}
 
         public ActionResult Contact()
         {
