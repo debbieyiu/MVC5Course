@@ -16,8 +16,13 @@ namespace MVC5Course.Controllers
     {
         private FabricsEntities db = new FabricsEntities();
 
-        // GET: api/ProductsApi
-        public IQueryable<Product> GetProduct()
+		public ProductsApiController()
+		{
+			db.Configuration.LazyLoadingEnabled = false;
+		}
+
+		// GET: api/ProductsApi
+		public IQueryable<Product> GetProduct()
         {
             return db.Product;
         }
