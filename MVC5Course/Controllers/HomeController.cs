@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
@@ -26,5 +28,24 @@ namespace MVC5Course.Controllers
 
             return View();
         }
+
+		public ActionResult Login()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Login(LoginViewModel login, string ReturnUrl)
+		{
+			if (ModelState.IsValid)
+			{
+				if (login.Email == "debbie.yiu.0219@gmail.com" && login.Password == "111111")
+				{
+					FormsAuthentication.RedirectFromLoginPage(login.Email, false);
+					return Redirect(ReturnUrl ?? "/");
+				}
+			}
+			return View();
+		}
     }
 }

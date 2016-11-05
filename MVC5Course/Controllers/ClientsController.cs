@@ -11,6 +11,7 @@ using MVC5Course.Models.ViewModels;
 
 namespace MVC5Course.Controllers
 {
+	[Authorize]
     public class ClientsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
