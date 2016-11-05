@@ -1,10 +1,11 @@
 namespace MVC5Course.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    
-    [MetadataType(typeof(OrderLineMetaData))]
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+	using Newtonsoft.Json;
+
+	[MetadataType(typeof(OrderLineMetaData))]
     public partial class OrderLine
     {
     }
@@ -22,7 +23,9 @@ namespace MVC5Course.Models
         [Required]
         public decimal LineTotal { get; set; }
     
+		[JsonIgnore]
         public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+		[JsonIgnore]
+		public virtual Product Product { get; set; }
     }
 }

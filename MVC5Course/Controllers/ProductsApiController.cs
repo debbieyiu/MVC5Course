@@ -22,12 +22,14 @@ namespace MVC5Course.Controllers
 		}
 
 		// GET: api/ProductsApi
+		[Route("prods")]
 		public IQueryable<Product> GetProduct()
         {
             return db.Product;
         }
 
         // GET: api/ProductsApi/5
+		[Route("prods/{id}")]
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
@@ -40,7 +42,20 @@ namespace MVC5Course.Controllers
             return Ok(product);
         }
 
-        // PUT: api/ProductsApi/5
+		[Route("prods/{id}/orderlines")]
+		public IHttpActionResult GetProductOrderLine(int id)
+		{
+			Product product = db.Product.Find(id);
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(db.OrderLine.Where(p => p.ProductId == id).ToList());
+		}
+
+		// PUT: api/ProductsApi/5
+		
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct(int id, Product product)
         {
@@ -74,6 +89,8 @@ namespace MVC5Course.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+		
 
         // POST: api/ProductsApi
         [ResponseType(typeof(Product))]
